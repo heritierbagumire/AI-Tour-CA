@@ -20,12 +20,30 @@ The Travel Activity Planner is a lightweight application that uses GPT-4 to crea
 
 Here’s a screencast of the final application:
 
--![image](https://github.com/user-attachments/assets/47e19972-1186-4a8f-b825-55e757b3c1f2)
+![over-view of the project](https://github.com/user-attachments/assets/47e19972-1186-4a8f-b825-55e757b3c1f2)
 
 
 
 ### ✍️ Authors
  https://github.com/heritierbagumire
+
+### 🛠️ Setup
+1. Clone the repository:
+   
+ ```
+git clone https://github.com/heritierbagumire/AI-Tour-CA.git
+cd Ai-Tour-CA
+```
+2. Installing the dependencies
+```
+npm install 
+```
+3. Set up your OpenAI API key:
+ Create a .env.local file in the project root and add:
+  env.local
+```
+OPENAI_API_KEY=your-api-key
+```
 
 
 ## 🚀 Usage
