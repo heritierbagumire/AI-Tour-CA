@@ -1,4 +1,4 @@
-import { Itinerary } from "@/lib/itinerary-schema";
+
 
 export const ItineraryView = ({ itinerary }: { itinerary?: Itinerary }) => (
     <div className="mt-8">
