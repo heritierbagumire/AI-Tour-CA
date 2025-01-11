@@ -12,7 +12,7 @@ export const runtime = "edge";
 
 
 export async function POST(req: Request) {
-  console.log("API Route Hit");
+  console.log("API Route Hit")
   try {
     const { destination, lengthOfStay } = await req.json();
     console.log("Received:", { destination, lengthOfStay });
