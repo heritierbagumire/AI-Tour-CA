@@ -20,8 +20,13 @@ export function useItinerary() {
       try {
         const response = await fetch("/api/stream-objects", {
           method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({ destination, lengthOfStay }),
-        });
+        })
+        console.log("Request Body:", { destination, lengthOfStay });
+
 
         const stream = ObjectStreamFromResponse({
           schema: itinerarySchema,

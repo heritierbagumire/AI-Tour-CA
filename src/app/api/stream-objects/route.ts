@@ -1,37 +1,35 @@
-import { itinerarySchema } from "@/lib/itinerary-schema";
+import { itinerarySchema } from "@/lib/itenarary-schema";
+// import { Itinerary } from "@/lib/itenarary-schema"
+import OpenAI from 'openai';
 import {
   ObjectStreamResponse,
   jsonObjectPrompt,
-  openai,
   streamObject,
 } from "modelfusion";
 
+
 export const runtime = "edge";
 
+
 export async function POST(req: Request) {
-  const { destination, lengthOfStay } = await req.json();
+  console.log("API Route Hit");
+  try {
+    const { destination, lengthOfStay } = await req.json();
+    console.log("Received:", { destination, lengthOfStay });
 
-  const objectStream = await streamObject({
-    model: openai
-      .ChatTextGenerator({
-        model: "gpt-4-1106-preview",
-        maxGenerationTokens: 2500,
-      })
-      .asObjectGenerationModel(jsonObjectPrompt.instruction()),
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+      throw new Error("OpenAI API key is missing.");
+    }
 
-    schema: itinerarySchema,
-
-    prompt: {
-      system:
-        `You help planning travel itineraries. ` +
-        `Respond to the users' request with a list ` +
-        `of the best stops to make in their destination.`,
-
-      instruction:
-        `I am planning a trip to ${destination} for ${lengthOfStay} days. ` +
-        `Please suggest the best tourist activities for me to do.`,
-    },
-  });
-
-  return new ObjectStreamResponse(objectStream);
+    // Additional debug
+    console.log("OpenAI API Key Loaded");
+    return new Response("API is working!", { status: 200 });
+  } catch (error) {
+    console.error("Error in POST handler:", error);
+    return new Response(
+      JSON.stringify({ error: "Internal Server Error", details: error.message }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
+  }
 }
