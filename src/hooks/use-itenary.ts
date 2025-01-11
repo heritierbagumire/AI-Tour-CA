@@ -1,5 +1,5 @@
 import { Itinerary, itinerarySchema } from "@/lib/itenarary-schema";
-// import { ObjectStreamFromResponse } from "modelfusion";
+import { ObjectStreamFromResponse } from "modelfusion";
 import { useCallback, useState } from "react";
 
 export function useItinerary() {

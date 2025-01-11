@@ -1,5 +1,4 @@
-
-
+import { Itinerary } from "@/lib/itenarary-schema";
 export const ItineraryView = ({ itinerary }: { itinerary?: Itinerary }) => (
     <div className="mt-8">
         {itinerary?.days && (
